@@ -12,7 +12,7 @@ export class BugController extends BaseController {
       .get('/:id', this.getOne)
       .post('', this.create)
       .put('/:id', this.edit)
-      .delete('/:id', this.close)
+      .delete('/:id', this.edit)
   }
 
   async getAll(req, res, next) {
@@ -46,16 +46,6 @@ export class BugController extends BaseController {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email
       return res.send(await bugService.edit(req.params.id, req.body))
-    } catch (error) {
-      next(error)
-    }
-  }
-
-  async close(req, res, next) {
-    try {
-      // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-      req.body.creatorEmail = req.userInfo.email
-      return res.send(await req.body)
     } catch (error) {
       next(error)
     }

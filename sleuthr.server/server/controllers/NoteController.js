@@ -1,29 +1,22 @@
 import BaseController from '../utils/BaseController'
 import { Auth0Provider } from '@bcwdev/auth0provider'
+import { noteService } from '../services/NoteService'
 
 export class NoteController extends BaseController {
   constructor() {
-    super('api/notes')
+    super('api/bugs/:id/notes')
     this.router
     // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .get('/:id', this.getOne)
-      .post('/:id', this.create)
-      .put('/:id', this.create)
+      .post('', this.create)
+      .put('/:id', this.edit)
+      .delete('/:id', this.delete)
   }
 
   async getAll(req, res, next) {
     try {
-      return res.send(await req.body)
-    } catch (error) {
-      next(error)
-    }
-  }
-
-  async getOne(req, res, next) {
-    try {
-      return res.send(await req.body)
+      return res.send(await noteService.getAll(req.body))
     } catch (error) {
       next(error)
     }
@@ -33,17 +26,17 @@ export class NoteController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email
-      return res.send(await req.body)
+      return res.send(await noteService.create(req.body))
     } catch (error) {
       next(error)
     }
   }
 
-  async update(req, res, next) {
+  async edit(req, res, next) {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email
-      return res.send(await req.body)
+      return res.send(await noteService.edit(req.params.id, req.body))
     } catch (error) {
       next(error)
     }
@@ -53,7 +46,7 @@ export class NoteController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email
-      return res.send(await req.body)
+      return res.send(await noteService.delete(req.params.id))
     } catch (error) {
       next(error)
     }

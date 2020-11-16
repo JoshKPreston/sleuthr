@@ -1,10 +1,10 @@
 <template>
   <div class="EditBugPage flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="container">
-      <div class="row">
+      <div class="row p-3">
         <h1>Edit Bug</h1>
       </div>
-      <div class="row">
+      <div class="row p-3">
         <form class="col-8 report-bug-form" @submit.prevent="editBug(state.bug)">
           <div class="form-group">
             <label for="bugTitle">Title</label>

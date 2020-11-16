@@ -37,22 +37,10 @@ class BugService {
 
   async edit(id, bug) {
     try {
-      if (!dbContext.Bug.findOne({ title: bug.title })) {
-        throw new BadRequest(`Could not find bug with title: "${bug.title}"`)
-      } else {
-        return await dbContext.Bug.findByIdAndUpdate(id, bug, { new: true })
-      }
-    } catch (error) {
-      logger.error(error)
-    }
-  }
-
-  async close(bug) {
-    try {
       if (!dbContext.Bug.findById(bug.id)) {
         throw new BadRequest(`Could not find bug with title: "${bug.title}"`)
       } else {
-        return await dbContext.Bug.findByIdAndUpdate(bug._id, bug)
+        return await dbContext.Bug.findByIdAndUpdate(id, bug, { new: true })
       }
     } catch (error) {
       logger.error(error)

@@ -2,36 +2,38 @@
 <template>
   <div class="ReportBugPage flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="container">
-      <div class="row">
+      <div class="row p-3">
         <h1>Report Bug</h1>
       </div>
-      <form class="col-8 report-bug-form" @submit.prevent="reportBug(state.newBug)">
-        <div class="form-group">
-          <label for="bugTitle">Title</label>
-          <input
-            type="text"
-            name="bugTitle"
-            id="bugTitle"
-            class="form-control"
-            placeholder=""
-            aria-describedby="helpId"
-            v-model="state.newBug.title"
-          />
+      <div class="row p-3">
+        <form class="col-8 report-bug-form" @submit.prevent="reportBug(state.newBug)">
           <div class="form-group">
-            <label for="bugDescription">Description</label>
-            <textarea
+            <label for="bugTitle">Title</label>
+            <input
+              type="text"
+              name="bugTitle"
+              id="bugTitle"
               class="form-control"
-              name="bugDescription"
-              id="bugDescription"
-              rows="15"
-              v-model="state.newBug.description"
-            ></textarea>
+              placeholder=""
+              aria-describedby="helpId"
+              v-model="state.newBug.title"
+            />
+            <div class="form-group">
+              <label for="bugDescription">Description</label>
+              <textarea
+                class="form-control"
+                name="bugDescription"
+                id="bugDescription"
+                rows="15"
+                v-model="state.newBug.description"
+              ></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">
+              Submit
+            </button>
           </div>
-          <button class="btn btn-primary" type="submit">
-            Submit
-          </button>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -59,7 +61,4 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-textarea {
-  resize: none;
-}
 </style>

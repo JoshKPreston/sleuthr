@@ -1,23 +1,23 @@
 <template>
   <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-start">
     <div class="container">
-      <div class="row">
+      <div class="row p-3">
         <h1>Dashboard</h1>
       </div>
-      <div class="row">
+      <div class="row p-3">
         <div class="col-1">
           <h6>Status</h6>
         </div>
-        <div class="col-3">
+        <div class="col-3 text-left">
           <h6>Title</h6>
         </div>
-        <div class="col-2">
+        <div class="col-4">
           <h6>Modify</h6>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <h6>Creator</h6>
         </div>
-        <div class="col-3">
+        <div class="col-2">
           <h6>Date Modified</h6>
         </div>
       </div>
@@ -39,7 +39,7 @@ export default {
       bugService.getAll()
     })
     return {
-      bugs: computed(() => AppState.bugs)
+      bugs: computed(() => AppState.bugs.filter(b => b.archived !== true))
     }
   }
 }
