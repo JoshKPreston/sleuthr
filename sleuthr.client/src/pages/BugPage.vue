@@ -1,5 +1,5 @@
 <template>
-  <div class="BugPage flex-grow-1 d-flex flex-column align-items-center justify-content-start">
+  <div class="BugPage page flex-grow-1 d-flex flex-column align-items-center justify-content-start">
     <div class="container">
       <div class="row p-3">
         <h1>Bug Report</h1>

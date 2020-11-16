@@ -3,7 +3,7 @@ import { api } from '../services/AxiosService'
 import { logger } from '../utils/Logger'
 
 class BugService {
-  async getAll() {
+  async getAll(query = {}) {
     try {
       const res = await api.get('api/bugs')
       AppState.bugs = res.data

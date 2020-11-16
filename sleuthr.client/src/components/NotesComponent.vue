@@ -9,7 +9,7 @@
       </div>
     </div>
     <div class="col-6 note-message d-flex">
-      <textarea rows="10" class="flex-grow-1 h-100 rounded" v-model="note.message" @change="editNote(bug, note)"></textarea>
+      <textarea rows="10" class="flex-grow-1 h-100 rounded" v-model="note.message" @change="editNote(bug, note)" :disabled="profile.email !== note.creatorEmail ? true : false"></textarea>
     </div>
     <div class="col-2 text-center">
       <button class="btn btn-danger" v-if="profile.email === note.creatorEmail" @click="deleteNote(bug, note)" :disabled="bug.archived ? true : false">

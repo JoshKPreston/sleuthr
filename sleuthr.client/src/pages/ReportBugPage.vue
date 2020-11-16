@@ -1,6 +1,6 @@
 // All bugs will have a title, description, who reported the bug, closedDate and whether or not it has been closed.
 <template>
-  <div class="ReportBugPage flex-grow-1 d-flex flex-column align-items-center justify-content-center">
+  <div class="ReportBugPage page flex-grow-1 d-flex flex-column align-items-center justify-content-center">
     <div class="container">
       <div class="row p-3">
         <h1>Report Bug</h1>

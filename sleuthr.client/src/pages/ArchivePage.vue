@@ -1,5 +1,5 @@
 <template>
-  <div class="ArchivePage flex-grow-1 d-flex flex-column align-items-center justify-content-start">
+  <div class="ArchivePage page flex-grow-1 d-flex flex-column align-items-center justify-content-start">
     <div class="container">
       <div class="row p-3">
         <h1>Archive</h1>
