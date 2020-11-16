@@ -7,16 +7,17 @@ const Bug = new Schema(
   {
     title: { type: String, required: true },
     description: { type: String, required: true },
-    creatorId: { type: String, ref: 'Profile', required: true },
-    closed: { type: Boolean, default: false }
+    creatorEmail: { type: String, ref: 'Profile', required: true },
+    closed: { type: Boolean, default: false },
+    archived: { type: Boolean, default: false }
   },
   { timestamps: true, toJSON: { virtuals: true } }
 )
 
 Bug.virtual('creator', {
-  localField: 'creatorId',
+  localField: 'creatorEmail',
   ref: 'Profile',
-  foreignField: '_id',
+  foreignField: 'email',
   justOne: true
 })
 

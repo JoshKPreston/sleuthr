@@ -3,7 +3,8 @@
     <Navbar />
   </header>
   <main>
-    <router-view v-slot="{Component}">
+    <MenuControls />
+    <router-view v-slot="{ Component }">
       <transition name="route" mode="out-in">
         <component :is="Component" />
       </transition>
@@ -30,5 +31,4 @@ export default {
 </script>
 <style lang="scss">
 @import "./assets/scss/main.scss";
-
 </style>

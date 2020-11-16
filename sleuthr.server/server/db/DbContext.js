@@ -4,9 +4,9 @@ import BugSchema from '../models/Bug'
 import NoteSchema from '../models/Note'
 
 class DbContext {
-  Bug = mongoose.model('Bug', BugSchema);
-  Note = mongoose.model('Note', NoteSchema);
-  Profile = mongoose.model('Profile', ProfileSchema);
+  Bug = mongoose.model('bug', BugSchema);
+  Note = mongoose.model('note', NoteSchema);
+  Profile = mongoose.model('profile', ProfileSchema);
 }
 
 export const dbContext = new DbContext()

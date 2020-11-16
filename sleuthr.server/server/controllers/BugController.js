@@ -15,12 +15,6 @@ export class BugController extends BaseController {
       .delete('/:id', this.close)
   }
 
-  // /bugs: returns a list of all the bugs
-
-  // /bugs/:id: returns a single bug with all it's data
-
-  // /bugs/:id/notes: returns all notes for a given bug id
-
   async getAll(req, res, next) {
     try {
       return res.send(await bugService.getAll(req.body))
@@ -31,7 +25,7 @@ export class BugController extends BaseController {
 
   async getOne(req, res, next) {
     try {
-      return res.send(await bugService.getOne(req.body.id))
+      return res.send(await bugService.getOne(req.params.id))
     } catch (error) {
       next(error)
     }
@@ -51,7 +45,7 @@ export class BugController extends BaseController {
     try {
       // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
       req.body.creatorEmail = req.userInfo.email
-      return res.send(await bugService.edit(req.body.id, req.body))
+      return res.send(await bugService.edit(req.params.id, req.body))
     } catch (error) {
       next(error)
     }

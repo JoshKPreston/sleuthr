@@ -2,26 +2,26 @@ import { dbContext } from '../db/DbContext'
 import { BadRequest } from '../utils/Errors'
 import { logger } from '../utils/Logger'
 
-class BugService {
+class NoteService {
   async find(query = {}) {
     try {
-      return await dbContext.Bug.find(query)
+      return await dbContext.Note.find(query)
     } catch (error) {
       logger.error(error)
-      throw new BadRequest('Server BugService.js failed at method: find()')
+      throw new BadRequest('Server NoteService.js failed at method: find()')
     }
   }
 
   async findById(id) {
-    const bug = await dbContext.Bug.findById(id)
-    if (!bug) {
+    const note = await dbContext.Note.findById(id)
+    if (!note) {
       throw new BadRequest('Invalid Id')
     }
-    return bug
+    return note
   }
 
-  async create(bug) {
+  async create(note) {
   }
 }
 
-export const bugService = new BugService()
+export const noteService = new NoteService()

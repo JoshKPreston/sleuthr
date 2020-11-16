@@ -8,11 +8,20 @@ export class NoteController extends BaseController {
     // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getAll)
-      .post('', this.create)
-      .put('', this.create)
+      .get('/:id', this.getOne)
+      .post('/:id', this.create)
+      .put('/:id', this.create)
   }
 
   async getAll(req, res, next) {
+    try {
+      return res.send(await req.body)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getOne(req, res, next) {
     try {
       return res.send(await req.body)
     } catch (error) {
